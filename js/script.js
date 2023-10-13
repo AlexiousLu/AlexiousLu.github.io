@@ -15,7 +15,7 @@
     }, searchAnimDuration);
   };
 
-  $('.nav-search-btn').on('click', function(){
+  $('#nav-search-btn').on('click', function(){
     if (isSearchAnim) return;
 
     startSearchAnim();
@@ -42,6 +42,8 @@
       encodedUrl = encodeURIComponent(url),
       id = 'article-share-box-' + $this.attr('data-id'),
       title = $this.attr('data-title'),
+      encodedTitle = encodeURIComponent(title),
+      summary = $this.attr('data-summary'),
       offset = $this.offset();
 
     if ($('#' + id).length){
@@ -56,10 +58,11 @@
         '<div id="' + id + '" class="article-share-box">',
           '<input class="article-share-input" value="' + url + '">',
           '<div class="article-share-links">',
-            '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"><span class="fa fa-twitter"></span></a>',
-            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>',
-            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"><span class="fa fa-pinterest"></span></a>',
-            '<a href="https://www.linkedin.com/shareArticle?mini=true&url=' + encodedUrl + '" class="article-share-linkedin" target="_blank" title="LinkedIn"><span class="fa fa-linkedin"></span></a>',
+		    '<a href="http://v.t.sina.com.cn/share/share.php?url=' + encodedUrl + '&title=' + "[" + encodedTitle + "]" + summary + '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+            '<a href="https://twitter.com/intent/tweet?text=' + encodedTitle + '&url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+            '<a href="https://www.linkedin.com/shareArticle?mini=true&url=' + encodedUrl + '" class="article-share-linkedin" target="_blank" title="LinkedIn"></a>',
           '</div>',
         '</div>'
       ].join('');
